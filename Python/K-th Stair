@@ -1,0 +1,15 @@
+class Solution:
+    def numWaysToReachStair(self, k: int) -> int:
+        dp = [0] * (k + 1)
+        dp[0], dp[1] = 2, 4 if k >= 1 else 0  # Base cases
+
+        jump = 0
+        
+        for i in range(2, k + 1):
+            dp[i] = dp[i - 1]
+            
+            if i - 2 >= 0:
+                dp[i] += dp[i - 2]
+                jump += 1  # Increment the jump after using it
+
+        return dp[k]
