@@ -1,0 +1,31 @@
+//Power(x,n) Algorithm in C++ using advance algorithm
+#include <iostream>
+using namespace std;
+
+double power(double x, int n) {
+    if (n == 0)
+        return 1;
+    
+    if (n < 0)
+        return 1 / power(x, -n);
+    
+    double half = power(x, n / 2);
+    if (n % 2 == 0)
+        return half * half;
+    else
+        return x * half * half;
+}
+
+int main() {
+    double x;
+    int n;
+    
+    cout << "Enter the base (x): ";
+    cin >> x;
+    cout << "Enter the exponent (n): ";
+    cin >> n;
+
+    double result = power(x, n);
+    cout << "Result of " << x << "^" << n << " is: " << result << endl;
+    return 0;
+}
